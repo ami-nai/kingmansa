@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/state_manager.dart';
 import 'package:kingmansa/constants.dart';
+import 'package:kingmansa/view/desktop/menu.dart';
+
+class DesktopUserDashboardController extends GetxController {
+  var itemCount = 3.obs;
+  var isViewMore = false.obs;
+}
 
 class DesktopUserDashboard extends StatelessWidget {
   DesktopUserDashboard({super.key});
+
+  final controller = Get.put(DesktopUserDashboardController());
 
   final List<String> gridItems = [
     'Unread Message',
@@ -43,7 +53,7 @@ class DesktopUserDashboard extends StatelessWidget {
                 width: 300,
                 decoration: BoxDecoration(
                   borderRadius: borderRadius,
-                  color: orderCardColor,
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey,
@@ -53,242 +63,223 @@ class DesktopUserDashboard extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      "Dashboard",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(height: 1000),
-                    ElevatedButton(onPressed: () {}, child: Icon(Icons.logout)),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: menu(),
                 ),
               ),
               SizedBox(width: 20),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: <Widget>[
-                      GridView.builder(
-                        shrinkWrap:
-                            true, // Ensures GridView takes only the required height
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: 4,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4,
-                          mainAxisSpacing: 10,
-                          crossAxisSpacing: 10,
-                          childAspectRatio: 1.6,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: cardColor,
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Expanded(
-                                    child: Container(
-                                      // color: Colors.green,
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            "1",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize:
-                                                  MediaQuery.of(
-                                                    context,
-                                                  ).size.width *
-                                                  0.08,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          Spacer(),
-                                          Icon(
-                                            Icons.shopping_cart_rounded,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    GridView.builder(
+                      shrinkWrap:
+                          true, // Ensures GridView takes only the required height
+                      itemCount: 4,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 1.6,
+                      ),
+                      itemBuilder: (context, index) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: cardColor,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    // color: Colors.green,
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                          "1",
+                                          style: TextStyle(
                                             color: Colors.white,
-                                            size:
+                                            fontSize:
                                                 MediaQuery.of(
                                                   context,
                                                 ).size.width *
                                                 0.08,
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                        Spacer(),
+                                        Icon(
+                                          Icons.shopping_cart_rounded,
+                                          color: Colors.white,
+                                          size:
+                                              MediaQuery.of(
+                                                context,
+                                              ).size.width *
+                                              0.08,
+                                        ),
+                                      ],
                                     ),
                                   ),
-
-                                  Divider(thickness: 0.5, height: 0),
+                                ),
+                
+                                Divider(thickness: 0.5, height: 0),
+                                Text(
+                                  "${gridItems[index]}",
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    //   backgroundColor: Colors.blue,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                
+                    SizedBox(
+                      height: 20.0,
+                    ), // Add spacing between the grid and the bottom
+                    Container(
+                      //width: 800,
+                      height: 300,
+                      decoration: BoxDecoration(
+                        borderRadius: borderRadius,
+                        color: orderCardColor,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            spreadRadius: 1,
+                            blurRadius: 10,
+                            offset: Offset(
+                              0,
+                              3,
+                            ), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
                                   Text(
-                                    "${gridItems[index]}",
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
+                                    "Orders",
                                     style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 12,
-                                      //   backgroundColor: Colors.blue,
+                                      color: cardColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ],
                               ),
                             ),
-                          );
-                        },
-                      ),
-
-                      SizedBox(
-                        height: 20.0,
-                      ), // Add spacing between the grid and the bottom
-                      Container(
-                        width: 800,
-                        height: 300,
-                        decoration: BoxDecoration(
-                          borderRadius: borderRadius,
-                          color: orderCardColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey,
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                              offset: Offset(
-                                0,
-                                3,
-                              ), // changes position of shadow
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Padding(
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    Text(
-                                      "Orders",
-                                      style: TextStyle(
-                                        color: cardColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text('All'),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blueGrey[900],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          side: BorderSide(color: iconColor),
+                                        ),
                                       ),
                                     ),
+                                    SizedBox(width: 5),
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text('Confirming'),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blueGrey[900],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          side: BorderSide(color: iconColor),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text('Unpaid'),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blueGrey[900],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          side: BorderSide(color: iconColor),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      child: Text('Delivering'),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blueGrey[900],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            20,
+                                          ),
+                                          side: BorderSide(color: iconColor),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: 5),
                                   ],
                                 ),
                               ),
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(5.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text('All'),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              Colors.blueGrey[900],
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            side: BorderSide(
-                                              color: iconColor,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 5),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text('Confirming'),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              Colors.blueGrey[900],
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            side: BorderSide(
-                                              color: iconColor,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 5),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text('Unpaid'),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              Colors.blueGrey[900],
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            side: BorderSide(
-                                              color: iconColor,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 5),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        child: Text('Delivering'),
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor:
-                                              Colors.blueGrey[900],
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            side: BorderSide(
-                                              color: iconColor,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 5),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              Expanded(
-                                child: Center(
-                                  child: Container(
-                                    child: Text(
-                                      "No Orders Yet",
-                                      style: TextStyle(
-                                        color: cardColor,
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                            ),
+                            Expanded(
+                              child: Center(
+                                child: Container(
+                                  child: Text(
+                                    "No Orders Yet",
+                                    style: TextStyle(
+                                      color: cardColor,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-
-                      SizedBox(height: 20.0),
-
-                      Container(
-                        width: 800,
+                    ),
+                
+                    SizedBox(height: 20.0),
+                
+                    Obx(() {
+                      return Container(
                         decoration: BoxDecoration(
                           borderRadius: borderRadius,
                           color: Colors.white,
@@ -320,12 +311,12 @@ class DesktopUserDashboard extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                               ),
                               SizedBox(height: 20),
-
+                
                               GridView.builder(
                                 shrinkWrap:
                                     true, // Ensures GridView takes only the required height
-
-                                itemCount: 10,
+                
+                                itemCount: controller.itemCount.value,
                                 gridDelegate:
                                     SliverGridDelegateWithMaxCrossAxisExtent(
                                       maxCrossAxisExtent: 250,
@@ -345,10 +336,21 @@ class DesktopUserDashboard extends StatelessWidget {
                                         // width: 300,
                                         // height: 500,
                                         decoration: BoxDecoration(
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.grey,
+                                              spreadRadius: 1,
+                                              blurRadius: 10,
+                                              offset: Offset(
+                                                2,
+                                                2,
+                                              ), // changes position of shadow
+                                            ),
+                                          ],
                                           borderRadius: BorderRadius.circular(
                                             10,
                                           ),
-                                          color: Colors.red,
+                                          color: Colors.white,
                                         ),
                                         child: Column(
                                           crossAxisAlignment:
@@ -366,105 +368,168 @@ class DesktopUserDashboard extends StatelessWidget {
                                                 fit: BoxFit.fill,
                                               ),
                                             ),
-
-                                            Column(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: <Widget>[
-                                                Text(
-                                                  "A grade quality corm from agro",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight:
-                                                        FontWeight.bold,
+                
+                                            SizedBox(
+                                              height: containerHeight / 2,
+                                              width: containerWidth,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: <Widget>[
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.fromLTRB(
+                                                          10,
+                                                          8,
+                                                          10,
+                                                          0,
+                                                        ),
+                                                    child: Text(
+                                                      "A grade quality corm from agro",
+                                                      style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                      ),
+                                                      maxLines: 1,
+                                                      overflow: TextOverflow
+                                                          .ellipsis,
+                                                    ),
                                                   ),
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                                Text(
-                                                  "A grade quality corm from agro, grade quality corm from agro",
-                                                  style: TextStyle(
-                                                    color: Colors.white,
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.fromLTRB(
+                                                          10,
+                                                          8,
+                                                          10,
+                                                          0,
+                                                        ),
+                                                    child: Text(
+                                                      "A grade quality corm from agro, grade quality corm from agro",
+                                                      style: TextStyle(
+                                                        color: Colors.black,
+                                                        fontSize:
+                                                            containerHeight /
+                                                            25,
+                                                      ),
+                                                      maxLines: 2,
+                                                      overflow: TextOverflow
+                                                          .ellipsis,
+                                                    ),
                                                   ),
-                                                  maxLines: 2,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                            
-                                                Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .center,
-                                                  children: <Widget>[
-                                                    SizedBox(
-                                                      width: containerWidth / 2.5,
-                                                      height: containerHeight / 8,
-                                                      child: ElevatedButton(
-                                                        onPressed: () {},
-                                                        style: ElevatedButton.styleFrom(
-                                                          backgroundColor:
-                                                              buttonColor,
-                                                          shape: RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius.circular(
-                                                                  20,
+                                                  Spacer(),
+                
+                                                  Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: <Widget>[
+                                                      SizedBox(
+                                                        width:
+                                                            // containerWidth < 200
+                                                            // ? 70
+                                                            // :
+                                                            containerWidth /
+                                                            2.2,
+                                                        child: ElevatedButton(
+                                                          onPressed: () {},
+                                                          style: ElevatedButton.styleFrom(
+                                                            padding:
+                                                                EdgeInsets.fromLTRB(
+                                                                  0,
+                                                                  0,
+                                                                  0,
+                                                                  0,
                                                                 ),
-                                                            side: BorderSide(
-                                                              color:
-                                                                  buttonColor,
+                                                            backgroundColor:
+                                                                buttonColor,
+                                                            shape: RoundedRectangleBorder(
+                                                              borderRadius:
+                                                                  BorderRadius.circular(
+                                                                    20,
+                                                                  ),
+                                                              side: BorderSide(
+                                                                color:
+                                                                    buttonColor,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          child: Text(
+                                                            'Inquire now',
+                                                            style: TextStyle(
+                                                              color: Colors
+                                                                  .white,
+                                                              fontSize:
+                                                                  // containerWidth <
+                                                                  //     200
+                                                                  // ? 10
+                                                                  // :
+                                                                  12,
+                                                              // fontWeight:
+                                                              //     FontWeight
+                                                              //         .bold,
                                                             ),
                                                           ),
                                                         ),
-                                                        child: Text(
-                                                          'Inquire now',
-                                                          style: TextStyle(
-                                                            color:
-                                                                Colors.white,
-                                                            fontSize: 10,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold,
-                                                          ),
-                                                        ),
                                                       ),
-                                                    ),
-                                                    SizedBox(width: 10),
-                                                    SizedBox(
-                                                      width: containerWidth / 2.5,
-                                                      height: containerHeight / 10,
-                                                      child: ElevatedButton(
-                                                        onPressed: () {},
-                                                        style: ElevatedButton.styleFrom(
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          shape: RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius.circular(
-                                                                  20,
+                
+                                                      if (containerWidth >
+                                                          200) ...[
+                                                        SizedBox(width: 5),
+                                                        SizedBox(
+                                                          width:
+                                                              containerWidth /
+                                                              2.4,
+                                                          child: ElevatedButton(
+                                                            onPressed: () {},
+                                                            style: ElevatedButton.styleFrom(
+                                                              padding:
+                                                                  EdgeInsets.fromLTRB(
+                                                                    0,
+                                                                    0,
+                                                                    0,
+                                                                    0,
+                                                                  ),
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .white,
+                                                              shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius.circular(
+                                                                      20,
+                                                                    ),
+                                                                side: BorderSide(
+                                                                  width: 0.5,
+                                                                  color:
+                                                                      iconColor,
                                                                 ),
-                                                            side: BorderSide(
-                                                              color:
-                                                                  iconColor,
+                                                              ),
+                                                            ),
+                                                            child: Text(
+                                                              'Chat now',
+                                                              style: TextStyle(
+                                                                inherit: true,
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize:
+                                                                    containerWidth <
+                                                                        200
+                                                                    ? 10
+                                                                    : 12,
+                                                                // fontWeight:
+                                                                //     FontWeight
+                                                                //         .bold,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
-                                                        child: Text(
-                                                          'Chat now',
-                                                          style: TextStyle(
-                                                            color:
-                                                                Colors.black,
-                                                            fontSize: 10,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .bold,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
+                                                      ],
+                                                    ],
+                                                  ),
+                                                  Spacer(),
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -473,13 +538,13 @@ class DesktopUserDashboard extends StatelessWidget {
                                   );
                                 },
                               ),
-                             
-                             
-                             
+                
                               SizedBox(height: 20),
                               Center(
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    controller.itemCount.value += 10;
+                                  },
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: iconColor,
                                     shape: RoundedRectangleBorder(
@@ -500,9 +565,10 @@ class DesktopUserDashboard extends StatelessWidget {
                             ],
                           ),
                         ),
-                      ),
-                    ],
-                  ),
+                      );
+                    }),
+                  
+                  ],
                 ),
               ),
             ],
