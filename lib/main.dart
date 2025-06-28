@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:kingmansa/view/desktop/desktop_user_dashboard.dart';
 import 'package:kingmansa/view/mobile/mobile_user_dashboard.dart';
 import 'package:kingmansa/view/responsive_layout.dart';
-// import 'package:kingmansa/view/mobile/mobile_user_dashboard.dart';
-// import 'package:kingmansa/view/responsive_layout.dart';
-// import 'package:kingmansa/view/user_dashboard.dart';
+import 'package:kingmansa/view/tablet/tablet_user_dashboard.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); // Add this
@@ -25,7 +23,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: ResponsiveLayout(mobileBody: MobileUserDashboard(), desktopBody: DesktopUserDashboard()),
+      home: ResponsiveLayout(
+        mobileBody: MobileUserDashboard(),
+        desktopBody: DesktopUserDashboard(),
+        tabletBody: TabletUserDashboard(),),
       // home: DesktopUserDashboard(),
     );
   }

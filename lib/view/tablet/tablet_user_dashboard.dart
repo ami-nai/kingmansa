@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:kingmansa/constants.dart';
-import 'package:kingmansa/view/dimensions.dart';
 
-class MobileUserDashboard extends StatelessWidget {
-  MobileUserDashboard({super.key});
+class TabletUserDashboard extends StatelessWidget {
+  TabletUserDashboard({super.key});
 
   final List<String> gridItems = [
     'Unread Message',
@@ -12,6 +10,7 @@ class MobileUserDashboard extends StatelessWidget {
     'Processing Order',
     'Complete Orders',
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,7 @@ class MobileUserDashboard extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          padding: const EdgeInsets.fromLTRB(200, 40, 200, 40),
           child: SafeArea(
             child: Column(
               children: <Widget>[
