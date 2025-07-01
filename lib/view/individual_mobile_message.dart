@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:kingmansa/Controllers/view_controller.dart';
 import 'package:kingmansa/constants.dart';
+import 'package:kingmansa/resources.dart';
 import 'package:kingmansa/view/web_message_screen.dart';
 
 Widget buildIndivisualMobileMessage(BuildContext context) {
+  final controller = Get.put(ViewController());
   final mWidth = MediaQuery.of(context).size.width;
   final mHeight = MediaQuery.of(context).size.height;
-  return Container(
+  final messageController = TextEditingController();
+
+  
+  return SizedBox(
     width: mWidth,
     height: mHeight,
-    child: Column(
-      children: [
-        Flexible(
-          child: ListView(
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(16),
+    child: Flexible(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
+          child: Column(
+            // primary: false,
+            // shrinkWrap: true,
+            // padding: const EdgeInsets.fromLTRB(5, 10, 5, 10),
             children: [
-              SizedBox(height: 20),
-              // Chat Header
+              
               Container(
                 decoration: BoxDecoration(
                   borderRadius: borderRadius,
@@ -32,6 +40,8 @@ Widget buildIndivisualMobileMessage(BuildContext context) {
                 ),
                 child: Column(
                   children: [
+                
+                    // Chat Header
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
@@ -44,7 +54,6 @@ Widget buildIndivisualMobileMessage(BuildContext context) {
                           topRight: Radius.circular(10),
                         ),
                       ),
-    
                       child: const Row(
                         children: [
                           SizedBox(width: 10),
@@ -68,8 +77,8 @@ Widget buildIndivisualMobileMessage(BuildContext context) {
                         ],
                       ),
                     ),
-    
-                    // Inquiry
+                
+                    // Inquiry Section
                     Padding(
                       padding: const EdgeInsets.all(16),
                       child: Card(
@@ -85,7 +94,6 @@ Widget buildIndivisualMobileMessage(BuildContext context) {
                                   borderRadius: BorderRadius.circular(10),
                                   color: Colors.pink[50],
                                 ),
-    
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Column(
@@ -138,74 +146,139 @@ Widget buildIndivisualMobileMessage(BuildContext context) {
                         ),
                       ),
                     ),
-    
-                    // Message
-                    ListView(
+                
+                    // Message List
+                
+                    WebMessageScreen().buildMessageBubble(
+                              context,
+                              'Kristin Watson',
+                              '2:24 AM',
+                              'Hello, I\'m interested in your product and would like to know more details. I look forward to hearing from you.\nThank you.',
+                              isMe: false,
+                            ),
+                    Obx(() {
+          
+                      return ListView.builder(itemBuilder: (context, index) {
+                        return WebMessageScreen().buildMessageBubble(
+                          context,
+                          controller.messages[index]['sender'],
+                          controller.messages[index]['time'],
+                          controller.messages[index]['text'],
+                          isMe: controller.messages[index]['isMe'],
+                        );
+                      }, 
+                      itemCount: controller.messages.length,
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-    
-                      children: [
-                        WebMessageScreen().buildMessageBubble(
-                          'Kristin Watson',
-                          'Yesterday 10:30 PM',
-                          'Hi Kristin Watson! Your appointment is approaching tomorrow with (Kristin Watson) at 12:30pm.',
-                          isMe: true,
+                      physics: NeverScrollableScrollPhysics());
+                      }),
+                      // return ListView.builder()(
+                      //   shrinkWrap: true,
+                      //   physics: NeverScrollableScrollPhysics(),
+                      //   children: [
+                      //     // Existing messages
+                      //     ...controller.messages.map((message) {
+                      //       return WebMessageScreen().buildMessageBubble(
+                      //         context,
+                      //         message['sender'],
+                      //         message['time'],
+                      //         message['text'],
+                      //         isMe: message['isMe'],
+                      //       );
+                      //     }).toList(),
+                      //   ],
+                      // );
+                    // }),
+                  
+                  // Message Input
+                  Container(
+                          padding: const EdgeInsets.all(16),
+                          
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                
+                              //Search bar
+                        Container(
+                          height: 40,
+                          width: mWidth * 0.5,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                color: Colors.grey[300]!,
+                spreadRadius: 2,
+                blurRadius: 20,
+                offset: const Offset(0, 3),
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: TextField(
+                            controller: messageController,
+                            decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
+                              hintText: 'Write message...',
+                              hoverColor: Colors.white,
+                              focusColor: Colors.white30,
+                              hintStyle: TextStyle(color: Colors.black),
+                              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
+                              ),
+                        
+                              contentPadding: const EdgeInsets.symmetric(
+                vertical: 8,
+                horizontal: 10,
+                              ),
+                            ),
+                          ),
                         ),
-    
-                        WebMessageScreen().buildMessageBubble(
-                          'Albert Flores',
-                          'Yesterday 10:30 PM',
-                          'Hi Kristin Watson! how are you',
-                          isMe: false,
+                        
+                
+                
+                
+                
+                
+                              
+                              const SizedBox(width: 15),
+                              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: cardColor,
+                ),
+                onPressed: () {
+                  if (messageController.text.isNotEmpty) {
+                    // Add the new message to the reactive list
+                    controller.messages.add({
+                      'sender': 'Albert Flores',
+                      'time': 'Now',
+                      'text': messageController.text,
+                      'isMe': true,
+                    });
+                
+                    // Clear the message input field after sending
+                    messageController.clear();
+                  }
+                },
+                child: Icon(Icons.send_rounded, color: iconColor,),
+                              ),
+                            ],
+                          ),
                         ),
-    
-                        WebMessageScreen().buildMessageBubble(
-                          'Kristin Watson',
-                          'Yesterday 10:30 PM',
-                          'Fine sdlafkjsdlfjiifadskg aroigjaoirfj joi jj i jjagfljgioradfmgadjgargfadkfj aojglangajgadfg',
-                          isMe: true,
-                        ),
-    
-                        WebMessageScreen().buildMessageBubble(
-                          'Albert Flores',
-                          'Yesterday 10:30 PM',
-                          'Send me the RFQ falsdkfjoiajrfoiwaejfoijgoirj gaoijgoiar giarejg oaij ',
-                          isMe: false,
-                        ),
-                      ],
-                    ),
+                      
                   ],
                 ),
               ),
+              
             ],
           ),
         ),
-    
-        // Message Input
-        Container(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            border: Border(top: BorderSide(color: Colors.grey[300]!)),
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Write message...',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 8),
-              ElevatedButton(onPressed: () {}, child: const Text('Send')),
-            ],
-          ),
-        ),
-      ],
+      ),
     ),
   );
 }
+
+
+
+
+
+

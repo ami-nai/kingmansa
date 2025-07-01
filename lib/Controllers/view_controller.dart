@@ -8,6 +8,14 @@ class ViewController extends GetxController{
   var selectedChatListTile = (-1).obs;
   var isChatListTileSelected = false.obs;
 
+  var giveNewMessageCount = 0.obs;
+  var messageLimit = 0.obs;
+  var newMessage = ''.obs;
+
+  // Reactive list to store messages
+  final RxList<Map<String, dynamic>> messages = <Map<String, dynamic>>[].obs;
+
+
   var selectedMenu = 'Dashboard'.obs;
 
   void selectMenu(String menu) {

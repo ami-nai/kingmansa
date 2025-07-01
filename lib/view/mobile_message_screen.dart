@@ -8,6 +8,7 @@ import 'package:kingmansa/view/web_message_screen.dart';
 class MobileMessageScreen extends StatelessWidget {
   MobileMessageScreen({super.key});
   final mobileController = Get.put(ViewController());
+  final messageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -224,6 +225,7 @@ class MobileMessageScreen extends StatelessWidget {
                   
                   children: [
                      WebMessageScreen().buildMessageBubble(
+                      context,
                     'Kristin Watson',
                     'Yesterday 10:30 PM',
                     'Hi Kristin Watson! Your appointment is approaching tomorrow with (Kristin Watson) at 12:30pm.',
@@ -231,6 +233,7 @@ class MobileMessageScreen extends StatelessWidget {
                   ),
                   
                   WebMessageScreen().buildMessageBubble(
+                    context,
                     'Albert Flores',
                     'Yesterday 10:30 PM',
                     'Hi Kristin Watson! how are you',
@@ -238,6 +241,7 @@ class MobileMessageScreen extends StatelessWidget {
                   ),
                   
                   WebMessageScreen().buildMessageBubble(
+                    context,
                     'Kristin Watson',
                     'Yesterday 10:30 PM',
                     'Fine sdlafkjsdlfjiifadskg aroigjaoirfj joi jj i jjagfljgioradfmgadjgargfadkfj aojglangajgadfg',
@@ -245,11 +249,29 @@ class MobileMessageScreen extends StatelessWidget {
                   ),
                   
                   WebMessageScreen().buildMessageBubble(
+                    context,
                     'Albert Flores',
                     'Yesterday 10:30 PM',
                     'Send me the RFQ falsdkfjoiajrfoiwaejfoijgoirj gaoijgoiar giarejg oaij ',
                     isMe: false,
                   ),
+
+                  Obx((){
+                    if(mobileController.giveNewMessageCount.value < mobileController.messageLimit.value){
+                      mobileController.giveNewMessageCount.value++;
+                      return WebMessageScreen().buildMessageBubble(
+                        context,
+                        'Albert Flores',
+                        'Now',
+                        'I have sent you the RFQ, please check it out.',
+                        isMe: false,
+                      );
+                    }
+                    else{
+                        return SizedBox.shrink();
+                      }
+
+                  })
                 
                   ],
                  ),
@@ -280,6 +302,7 @@ class MobileMessageScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: messageController,
                       decoration: InputDecoration(
                         hintText: 'Write message...',
                         border: OutlineInputBorder(
@@ -291,7 +314,16 @@ class MobileMessageScreen extends StatelessWidget {
                   ),
                   const SizedBox(width: 8),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if (messageController.text.isNotEmpty) {
+                        mobileController.messageLimit.value++;
+                        // Here you can add the logic to send the message
+                        print('Message sent: ${messageController.text}');
+                        // Clear the message input field after sending
+                        messageController.clear();
+                      }
+
+                    },
                     child: const Text('Send'),
                   ),
                 ],

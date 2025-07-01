@@ -530,6 +530,7 @@ class WebMessageScreen extends StatelessWidget {
                                               children: [
                                                 WebMessageScreen()
                                                     .buildMessageBubble(
+                                                      context,
                                                       'Kristin Watson',
                                                       'Yesterday 10:30 PM',
                                                       'Hi Kristin Watson! Your appointment is approaching tomorrow with (Kristin Watson) at 12:30pm.',
@@ -538,6 +539,7 @@ class WebMessageScreen extends StatelessWidget {
 
                                                 WebMessageScreen()
                                                     .buildMessageBubble(
+                                                      context,
                                                       'Albert Flores',
                                                       'Yesterday 10:30 PM',
                                                       'Hi Kristin Watson! how are you',
@@ -546,6 +548,7 @@ class WebMessageScreen extends StatelessWidget {
 
                                                 WebMessageScreen()
                                                     .buildMessageBubble(
+                                                      context,
                                                       'Kristin Watson',
                                                       'Yesterday 10:30 PM',
                                                       'Fine sdlafkjsdlfjiifadskg aroigjaoirfj joi jj i jjagfljgioradfmgadjgargfadkfj aojglangajgadfg',
@@ -554,6 +557,7 @@ class WebMessageScreen extends StatelessWidget {
 
                                                 WebMessageScreen()
                                                     .buildMessageBubble(
+                                                      context,
                                                       'Albert Flores',
                                                       'Yesterday 10:30 PM',
                                                       'Send me the RFQ falsdkfjoiajrfoiwaejfoijgoirj gaoijgoiar giarejg oaij ',
@@ -631,14 +635,17 @@ class WebMessageScreen extends StatelessWidget {
   }
 
   Widget buildMessageBubble(
+    BuildContext context,
     String sender,
     String time,
     String message, {
     required bool isMe,
   }) {
+    final mWidth = MediaQuery.of(context).size.width;
     return Align(
       //alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
+      child: 
+      Container(
         // width: 400,
         margin: const EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.all(12),
@@ -678,8 +685,7 @@ class WebMessageScreen extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                       child: Container(
-                        width:
-                            controller.mobileDeviceWidth.value, // Random width
+                        width: mWidth - 30, // Random width
 
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -691,7 +697,7 @@ class WebMessageScreen extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(8.0, 8, 8, 8),
-                          child: Text(message, style: TextStyle(fontSize: 15)),
+                          child: Text(message, style: TextStyle(color: Colors.black, fontSize: 15)),
                         ),
                       ),
                     ),
@@ -744,7 +750,7 @@ class WebMessageScreen extends StatelessWidget {
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                       child: Container(
                         width:
-                            controller.mobileDeviceWidth.value, // Random width
+                            mWidth - 30, // Random width
 
                         decoration: BoxDecoration(
                           color: Colors.grey[200],

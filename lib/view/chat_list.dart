@@ -39,6 +39,8 @@ Widget buildChatList(BuildContext context) {
             ],
           ),
         ),
+
+        //Search bar
         Padding(
           padding: const EdgeInsets.all(20),
           child: Row(
@@ -81,6 +83,7 @@ Widget buildChatList(BuildContext context) {
             ],
           ),
         ),
+        
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(

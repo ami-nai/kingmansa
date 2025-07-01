@@ -26,14 +26,21 @@ class MobileUserDashboard extends StatelessWidget {
         backgroundColor: cardColor,
         title: Row(
           children: <Widget>[
-            Icon(Icons.dashboard, color: Colors.white),
+            ClipRRect(
+            
+              borderRadius: BorderRadius.circular(10000),
+              child: Image.asset('assets/images/logo.webp', height: 40,
+              fit: BoxFit.cover,)),
             Spacer(),
-            Icon(Icons.message_outlined, color: Colors.white),
-            Icon(Icons.notifications_none_outlined, color: Colors.white),
+            Icon(Icons.message_outlined, color: Colors.white, size: 20,),
+            Icon(Icons.notifications_none_outlined, color: Colors.white, size: 20,),
             Row(
               children: <Widget>[
-                Icon(Icons.account_circle_outlined, color: Colors.white),
-                Text('Trade PRO', style: TextStyle(color: Colors.white)),
+                ClipRRect(
+              borderRadius: BorderRadius.circular(10000),
+              child: Image.asset(fit: BoxFit.cover,'assets/images/logo.webp',height: 30, width: 30,)),
+                SizedBox(width: 5),
+                Text('Trade PRO', style: TextStyle(color: Colors.white, fontSize: 16)),
                 Icon(Icons.arrow_drop_down, color: Colors.white),
               ],
             ),
@@ -150,7 +157,39 @@ class MobileUserDashboard extends StatelessWidget {
               else{ 
                 controller.isChatListTileSelected.value = false;
                 return Text("bye");}
-            })
+            }),
+
+            SizedBox(height: 10.0),
+            Container(
+              padding: EdgeInsets.only(top: 10),
+              width: double.infinity,
+              height: 60,
+              color: cardColor,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Copyright © 2025 Kingmansa. All rights reserved.',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Text(
+                      'Terms of Use',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(' | '),
+                    Text(
+                      'Privacy Policy',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ],)
+                ],
+              )
+            ),
                 
                 ],
               ),
@@ -158,6 +197,7 @@ class MobileUserDashboard extends StatelessWidget {
           ),
         ),
       ),
+      
     );
   }
 }
