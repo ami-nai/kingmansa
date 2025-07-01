@@ -1,22 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:kingmansa/Controllers/view_controller.dart';
 import 'package:kingmansa/constants.dart';
 
-class MenuController extends GetxController {
-
-  // Define any variables or methods needed for the menu controller
-  var selectedMenu = ''.obs;
-
-  void selectMenu(String menu) {
-    selectedMenu.value = menu;
-    // Add any additional logic needed when a menu is selected
-  }
-  
-  
-}
 
 Widget menu() {
-  final controller = Get.put(MenuController());
+  final controller = Get.put(ViewController());
   return ListView(
     shrinkWrap: true,
     children: <Widget>[
@@ -30,15 +19,8 @@ Widget menu() {
                 borderRadius: BorderRadius.circular(10),
                 color: controller.selectedMenu.value == 'dashboard'
                     ? cardColor// Highlight color for selected menu
-                    : Colors.white, // Default color for unselected menu
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 1,
-                    blurRadius: 10,
-                    offset: Offset(0, 3), // Changes position of shadow
-                  ),
-                ],
+                    : Colors.grey[200], // Default color for unselected menu
+               
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,15 +71,7 @@ Widget menu() {
                 borderRadius: BorderRadius.circular(10),
                 color: controller.selectedMenu.value == 'message'
                     ? cardColor// Highlight color for selected menu
-                    : Colors.white, // Default color for unselected menu
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 1,
-                    blurRadius: 10,
-                    offset: Offset(0, 3), // Changes position of shadow
-                  ),
-                ],
+                    : Colors.grey[200], // Default color for unselected menu
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,15 +117,8 @@ Widget menu() {
                 borderRadius: BorderRadius.circular(10),
                 color: controller.selectedMenu.value == 'my_orders'
                     ? cardColor// Highlight color for selected menu
-                    : Colors.white, // Default color for unselected menu
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 1,
-                    blurRadius: 10,
-                    offset: Offset(0, 3), // Changes position of shadow
-                  ),
-                ],
+                    : Colors.grey[200], // Default color for unselected menu
+               
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -197,15 +164,8 @@ Widget menu() {
                 borderRadius: BorderRadius.circular(10),
                 color: controller.selectedMenu.value == 'buying_leads'
                     ? cardColor// Highlight color for selected menu
-                    : Colors.white, // Default color for unselected menu
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 1,
-                    blurRadius: 10,
-                    offset: Offset(0, 3), // Changes position of shadow
-                  ),
-                ],
+                    : Colors.grey[200], // Default color for unselected menu
+               
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -251,15 +211,8 @@ Widget menu() {
                 borderRadius: BorderRadius.circular(10),
                 color: controller.selectedMenu.value == 'transaction'
                     ? cardColor// Highlight color for selected menu
-                    : Colors.white, // Default color for unselected menu
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 1,
-                    blurRadius: 10,
-                    offset: Offset(0, 3), // Changes position of shadow
-                  ),
-                ],
+                    : Colors.grey[200], // Default color for unselected menu
+                
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -305,15 +258,7 @@ Widget menu() {
                 borderRadius: BorderRadius.circular(10),
                 color: controller.selectedMenu.value == 'update_profile'
                     ? cardColor// Highlight color for selected menu
-                    : Colors.white, // Default color for unselected menu
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey,
-                    spreadRadius: 1,
-                    blurRadius: 10,
-                    offset: Offset(0, 3), // Changes position of shadow
-                  ),
-                ],
+                    : Colors.grey[200], // Default color for unselected menu
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

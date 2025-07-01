@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kingmansa/view/desktop/desktop_user_dashboard.dart';
+import 'package:kingmansa/Controllers/view_controller.dart';
+import 'package:kingmansa/view/desktop/desktop_user.dart';
 import 'package:kingmansa/view/mobile/mobile_user_dashboard.dart';
+import 'package:kingmansa/view/mobile_message_screen.dart';
 import 'package:kingmansa/view/responsive_layout.dart';
 import 'package:kingmansa/view/tablet/tablet_user_dashboard.dart';
+import 'package:kingmansa/view/web_message_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); // Add this
+  // Get.put(ViewController()); // Initialize the ViewController
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
 
