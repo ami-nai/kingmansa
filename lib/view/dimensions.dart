@@ -1,3 +1,3 @@
 const mobileWidth = 900;
-const tabletWidth = 1000;
+const tabletWidth = 2;
 const desktopWidth = 1200;

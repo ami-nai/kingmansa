@@ -47,6 +47,7 @@ class MobileUserDashboard extends StatelessWidget {
           ],
         ),
       ),
+      
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
@@ -141,7 +142,7 @@ class MobileUserDashboard extends StatelessWidget {
                       return SizedBox.shrink(); // Return an empty widget if the menu is hidden
                     }
                   }),
-
+                  SizedBox(height: 20,),
                   Obx((){
               if(controller.selectedMenu.value == 'Dashboard')
               {

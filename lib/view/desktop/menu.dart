@@ -11,13 +11,13 @@ Widget menu() {
     children: <Widget>[
       GestureDetector(
         onTap: () {
-          controller.selectMenu('dashboard'); // Update the selected menu
+          controller.selectMenu('Dashboard'); // Update the selected menu
         },
         child: Obx(() => Container(
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: controller.selectedMenu.value == 'dashboard'
+                color: controller.selectedMenu.value == 'Dashboard'
                     ? cardColor// Highlight color for selected menu
                     : Colors.grey[200], // Default color for unselected menu
                
@@ -31,7 +31,7 @@ Widget menu() {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10.0, 10, 0, 10.0),
                           child: Icon(Icons.dashboard_rounded,
-                            color: controller.selectedMenu.value == 'dashboard'
+                            color: controller.selectedMenu.value == 'Dashboard'
                                 ? Colors.white // Icon color for selected menu
                                 : iconColor, // Icon color for unselected menu
                           ) // Adjust icon size as needed),
@@ -42,7 +42,7 @@ Widget menu() {
                         Text(
                           "Dashboard",
                           style: TextStyle(
-                            color: controller.selectedMenu.value == 'dashboard'
+                            color: controller.selectedMenu.value == 'Dashboard'
                                 ? Colors.white // Text color for selected menu
                                 : Colors.black, // Text color for unselected menu
                           ),
@@ -63,13 +63,13 @@ Widget menu() {
       SizedBox(height: 8),
       GestureDetector(
         onTap: () {
-          controller.selectMenu('message'); // Update the selected menu
+          controller.selectMenu('Message'); // Update the selected menu
         },
         child: Obx(() => Container(
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: controller.selectedMenu.value == 'message'
+                color: controller.selectedMenu.value == 'Message'
                     ? cardColor// Highlight color for selected menu
                     : Colors.grey[200], // Default color for unselected menu
               ),
@@ -82,7 +82,7 @@ Widget menu() {
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10.0, 10, 0, 10.0),
                           child: Icon(Icons.dashboard_rounded,
-                            color: controller.selectedMenu.value == 'message'
+                            color: controller.selectedMenu.value == 'Message'
                                 ? Colors.white // Icon color for selected menu
                                 : iconColor, // Icon color for unselected menu
                           ) // Adjust icon size as needed),
@@ -93,7 +93,7 @@ Widget menu() {
                         Text(
                           "Message",
                           style: TextStyle(
-                            color: controller.selectedMenu.value == 'message'
+                            color: controller.selectedMenu.value == 'Message'
                                 ? Colors.white // Text color for selected menu
                                 : Colors.black, // Text color for unselected menu
                           ),

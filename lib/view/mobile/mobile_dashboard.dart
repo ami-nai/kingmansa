@@ -8,7 +8,6 @@ Widget buildMobileDashboard() {
   final controller = Get.put(ViewController());
   return Column(
     children: <Widget>[
-      SizedBox(height: 20.0), // Add spacing between the dashboard and grid
       GridView.builder(
         shrinkWrap: true, // Ensures GridView takes only the required height
         physics: NeverScrollableScrollPhysics(),
@@ -246,6 +245,7 @@ Widget buildMobileDashboard() {
                   ),
                 ),
               ),
+              
               Expanded(
                 child: Center(
                   child: Container(

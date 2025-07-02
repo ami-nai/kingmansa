@@ -12,7 +12,6 @@ Widget buildChatList(BuildContext context) {
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(height: 20),
         Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
