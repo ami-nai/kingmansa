@@ -81,7 +81,7 @@ Widget menu() {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10.0, 10, 0, 10.0),
-                          child: Icon(Icons.dashboard_rounded,
+                          child: Icon(Icons.chat_bubble_rounded,
                             color: controller.selectedMenu.value == 'Message'
                                 ? Colors.white // Icon color for selected menu
                                 : iconColor, // Icon color for unselected menu
@@ -109,13 +109,13 @@ Widget menu() {
       SizedBox(height: 8),
       GestureDetector(
         onTap: () {
-          controller.selectMenu('my_orders'); // Update the selected menu
+          controller.selectMenu('My Orders'); // Update the selected menu
         },
         child: Obx(() => Container(
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: controller.selectedMenu.value == 'my_orders'
+                color: controller.selectedMenu.value == 'My Orders'
                     ? cardColor// Highlight color for selected menu
                     : Colors.grey[200], // Default color for unselected menu
                
@@ -128,8 +128,8 @@ Widget menu() {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10.0, 10, 0, 10.0),
-                          child: Icon(Icons.dashboard_rounded,
-                            color: controller.selectedMenu.value == 'my_orders'
+                          child: Icon(Icons.shopping_cart_rounded,
+                            color: controller.selectedMenu.value == 'My Orders'
                                 ? Colors.white // Icon color for selected menu
                                 : iconColor, // Icon color for unselected menu
                           ) // Adjust icon size as needed),
@@ -140,7 +140,7 @@ Widget menu() {
                         Text(
                           "My Orders",
                           style: TextStyle(
-                            color: controller.selectedMenu.value == 'my_orders'
+                            color: controller.selectedMenu.value == 'My Orders'
                                 ? Colors.white // Text color for selected menu
                                 : Colors.black, // Text color for unselected menu
                           ),
@@ -156,13 +156,13 @@ Widget menu() {
       SizedBox(height: 8),
       GestureDetector(
         onTap: () {
-          controller.selectMenu('buying_leads'); // Update the selected menu
+          controller.selectMenu('Buying Leads'); // Update the selected menu
         },
         child: Obx(() => Container(
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: controller.selectedMenu.value == 'buying_leads'
+                color: controller.selectedMenu.value == 'Buying Leads'
                     ? cardColor// Highlight color for selected menu
                     : Colors.grey[200], // Default color for unselected menu
                
@@ -175,8 +175,8 @@ Widget menu() {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10.0, 10, 0, 10.0),
-                          child: Icon(Icons.dashboard_rounded,
-                            color: controller.selectedMenu.value == 'buying_leads'
+                          child: Icon(Icons.person_pin_circle_sharp,
+                            color: controller.selectedMenu.value == 'Buying Leads'
                                 ? Colors.white // Icon color for selected menu
                                 : iconColor, // Icon color for unselected menu
                           ) // Adjust icon size as needed),
@@ -187,7 +187,7 @@ Widget menu() {
                         Text(
                           "Buying Leads",
                           style: TextStyle(
-                            color: controller.selectedMenu.value == 'buying_leads'
+                            color: controller.selectedMenu.value == 'Buying Leads'
                                 ? Colors.white // Text color for selected menu
                                 : Colors.black, // Text color for unselected menu
                           ),
@@ -203,13 +203,13 @@ Widget menu() {
       SizedBox(height: 8),
       GestureDetector(
         onTap: () {
-          controller.selectMenu('transaction'); // Update the selected menu
+          controller.selectMenu('Transaction'); // Update the selected menu
         },
         child: Obx(() => Container(
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: controller.selectedMenu.value == 'transaction'
+                color: controller.selectedMenu.value == 'Transaction'
                     ? cardColor// Highlight color for selected menu
                     : Colors.grey[200], // Default color for unselected menu
                 
@@ -222,8 +222,8 @@ Widget menu() {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10.0, 10, 0, 10.0),
-                          child: Icon(Icons.dashboard_rounded,
-                            color: controller.selectedMenu.value == 'transaction'
+                          child: Icon(Icons.payment_rounded,
+                            color: controller.selectedMenu.value == 'Transaction'
                                 ? Colors.white // Icon color for selected menu
                                 : iconColor, // Icon color for unselected menu
                           ) // Adjust icon size as needed),
@@ -234,7 +234,7 @@ Widget menu() {
                         Text(
                           "Transaction",
                           style: TextStyle(
-                            color: controller.selectedMenu.value == 'transaction'
+                            color: controller.selectedMenu.value == 'Transaction'
                                 ? Colors.white // Text color for selected menu
                                 : Colors.black, // Text color for unselected menu
                           ),
@@ -250,13 +250,13 @@ Widget menu() {
       SizedBox(height: 8),
       GestureDetector(
         onTap: () {
-          controller.selectMenu('update_profile'); // Update the selected menu
+          controller.selectMenu('Update Profile'); // Update the selected menu
         },
         child: Obx(() => Container(
               height: 50,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: controller.selectedMenu.value == 'update_profile'
+                color: controller.selectedMenu.value == 'Update Profile'
                     ? cardColor// Highlight color for selected menu
                     : Colors.grey[200], // Default color for unselected menu
               ),
@@ -268,8 +268,8 @@ Widget menu() {
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.fromLTRB(10.0, 10, 0, 10.0),
-                          child: Icon(Icons.dashboard_rounded,
-                            color: controller.selectedMenu.value == 'update_profile'
+                          child: Icon(Icons.person,
+                            color: controller.selectedMenu.value == 'Update Profile'
                                 ? Colors.white // Icon color for selected menu
                                 : iconColor, // Icon color for unselected menu
                           ) // Adjust icon size as needed),
@@ -280,7 +280,7 @@ Widget menu() {
                         Text(
                           "Update Profile",
                           style: TextStyle(
-                            color: controller.selectedMenu.value == 'update_profile'
+                            color: controller.selectedMenu.value == 'Update Profile'
                                 ? Colors.white // Text color for selected menu
                                 : Colors.black, // Text color for unselected menu
                           ),

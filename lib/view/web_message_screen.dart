@@ -522,49 +522,54 @@ class WebMessageScreen extends StatelessWidget {
                                             ),
 
                                             // Message
-                                            ListView(
-                                              shrinkWrap: true,
-                                              physics:
-                                                  NeverScrollableScrollPhysics(),
+                                            // ListView(
+                                            //   shrinkWrap: true,
+                                            //   physics:
+                                            //       NeverScrollableScrollPhysics(),
 
-                                              children: [
-                                                WebMessageScreen()
-                                                    .buildMessageBubble(
-                                                      context,
-                                                      'Kristin Watson',
-                                                      'Yesterday 10:30 PM',
-                                                      'Hi Kristin Watson! Your appointment is approaching tomorrow with (Kristin Watson) at 12:30pm.',
-                                                      isMe: true,
-                                                    ),
+                                            //   children: [
+                                            //     WebMessageScreen()
+                                            //         .buildMessageBubble(
+                                            //           context,
+                                            //           'Kristin Watson',
+                                            //           'Yesterday 10:30 PM',
+                                            //           'Hi Kristin Watson! Your appointment is approaching tomorrow with (Kristin Watson) at 12:30pm.',
+                                            //           isMe: true,
+                                            //         ),
 
-                                                WebMessageScreen()
-                                                    .buildMessageBubble(
-                                                      context,
-                                                      'Albert Flores',
-                                                      'Yesterday 10:30 PM',
-                                                      'Hi Kristin Watson! how are you',
-                                                      isMe: false,
-                                                    ),
+                                            //     WebMessageScreen()
+                                            //         .buildMessageBubble(
+                                            //           context,
+                                            //           'Albert Flores',
+                                            //           'Yesterday 10:30 PM',
+                                            //           'Hi Kristin Watson! how are you',
+                                            //           isMe: false,
+                                            //         ),
 
-                                                WebMessageScreen()
-                                                    .buildMessageBubble(
-                                                      context,
-                                                      'Kristin Watson',
-                                                      'Yesterday 10:30 PM',
-                                                      'Fine sdlafkjsdlfjiifadskg aroigjaoirfj joi jj i jjagfljgioradfmgadjgargfadkfj aojglangajgadfg',
-                                                      isMe: true,
-                                                    ),
+                                            //     WebMessageScreen()
+                                            //         .buildMessageBubble(
+                                            //           context,
+                                            //           'Kristin Watson',
+                                            //           'Yesterday 10:30 PM',
+                                            //           'Fine sdlafkjsdlfjiifadskg aroigjaoirfj joi jj i jjagfljgioradfmgadjgargfadkfj aojglangajgadfg',
+                                            //           isMe: true,
+                                            //         ),
 
-                                                WebMessageScreen()
-                                                    .buildMessageBubble(
-                                                      context,
-                                                      'Albert Flores',
-                                                      'Yesterday 10:30 PM',
-                                                      'Send me the RFQ falsdkfjoiajrfoiwaejfoijgoirj gaoijgoiar giarejg oaij ',
-                                                      isMe: false,
-                                                    ),
-                                              ],
-                                            ),
+                                            //     WebMessageScreen()
+                                            //         .buildMessageBubble(
+                                            //           context,
+                                            //           'Albert Flores',
+                                            //           'Yesterday 10:30 PM',
+                                            //           'Send me the RFQ falsdkfjoiajrfoiwaejfoijgoirj gaoijgoiar giarejg oaij ',
+                                            //           isMe: false,
+                                            //         ),
+                                            //   ],
+                                            // ),
+                                          
+                                          
+                                          
+                                          
+                                          
                                           ],
                                         ),
                                       ),
@@ -636,6 +641,7 @@ class WebMessageScreen extends StatelessWidget {
 
   Widget buildMessageBubble(
     BuildContext context,
+    String image,
     String sender,
     String time,
     String message, {
@@ -697,7 +703,9 @@ class WebMessageScreen extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(8.0, 8, 8, 8),
-                          child: Text(message, style: TextStyle(color: Colors.black, fontSize: 15)),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(message, style: TextStyle(color: Colors.black, fontSize: 15))),
                         ),
                       ),
                     ),
@@ -708,7 +716,7 @@ class WebMessageScreen extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Image(
-                  image: AssetImage('assets/images/saree.jpeg'),
+                  image: AssetImage(image),
                   width: 50,
                   height: 50,
                   fit: BoxFit.cover,
@@ -718,7 +726,7 @@ class WebMessageScreen extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Image(
-                  image: AssetImage('assets/images/saree.jpeg'),
+                  image: AssetImage(image),
                   width: 50,
                   height: 50,
                   fit: BoxFit.cover,

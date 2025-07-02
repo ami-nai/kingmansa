@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:kingmansa/Controllers/view_controller.dart';
 import 'package:kingmansa/constants.dart';
+import 'package:kingmansa/resources.dart';
 import 'package:kingmansa/view/desktop/menu.dart';
 import 'package:kingmansa/view/desktop/web_dashboard.dart';
 import 'package:kingmansa/view/desktop/web_messenger.dart';
@@ -24,6 +25,7 @@ class DesktopUserDashboard extends StatelessWidget {
 
  @override
 Widget build(BuildContext context) {
+  final screenHeight = MediaQuery.of(context).size.height;
   return Scaffold(
     appBar: AppBar(
       toolbarHeight: 80,
@@ -87,6 +89,8 @@ Widget build(BuildContext context) {
                       // Side Menu
                       Container(
                         width: 280,
+                        height: screenHeight,
+                        
                         decoration: BoxDecoration(
                           borderRadius: borderRadius,
                           color: Colors.white,
@@ -99,9 +103,47 @@ Widget build(BuildContext context) {
                             ),
                           ],
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: menu(),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: menu(),
+                            ),
+
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10000),
+                                  child: Image.asset(
+                                    chatListItems[0]['icon'],
+                                    height: 40,
+                                    width: 40,
+                                    fit: BoxFit.cover,
+                                  )),
+                                  SizedBox(width: 10),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                  Text(chatListItems[0]['name'], style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),),
+                                  Text("Trade PRO", style: TextStyle(color: Colors.grey, fontSize: 12),),
+                                  ],)
+                              ]),
+                              SizedBox(height: 20),
+                              Row(children: [
+                                SizedBox(width: 10),
+                                Icon(Icons.logout_rounded, color: cardColor, size: 20,),
+                                Text("Logout", style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),),
+                              ])
+                            
+                            ],
+                          ),
+                        )
+                          ],
                         ),
                       ),
                       SizedBox(width: 20),
@@ -111,7 +153,7 @@ Widget build(BuildContext context) {
                         } else if (controller.selectedMenu.value == 'Message') {
                           return buildWebMessenger(context);
                         } else {
-                          return Text("bye");
+                          return Text("Comming Soon");
                         }
                       }),
                     ],
@@ -126,26 +168,20 @@ Widget build(BuildContext context) {
                   color: cardColor,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
                         'Copyright © 2025 Kingmansa. All rights reserved.',
                         style: TextStyle(
                           color: Colors.white,
                         ),
+                        maxLines: 1, overflow: TextOverflow.ellipsis,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Terms of Use',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Text(' | '),
-                          Text(
-                            'Privacy Policy',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        ],
+                      Text(
+                        'Terms of Use | Privacy Policy',
+                        style: TextStyle(color: Colors.white),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),

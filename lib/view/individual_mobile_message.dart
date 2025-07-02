@@ -153,16 +153,19 @@ Widget buildIndivisualMobileMessage(BuildContext context) {
                     // Message List
                     WebMessageScreen().buildMessageBubble(
                       context,
+                      'assets/images/logo.webp',
                       'Kristin Watson',
                       '2:24 AM',
                       'Hello, I\'m interested in your product and would like to know more details. I look forward to hearing from you.\nThank you.',
                       isMe: false,
                     ),
+                    
                     Obx(() {
                       return ListView.builder(
                         itemBuilder: (context, index) {
                           return WebMessageScreen().buildMessageBubble(
                             context,
+                            controller.messages[index]['image'],
                             controller.messages[index]['sender'],
                             controller.messages[index]['time'],
                             controller.messages[index]['text'],
@@ -174,6 +177,18 @@ Widget buildIndivisualMobileMessage(BuildContext context) {
                         physics: NeverScrollableScrollPhysics(),
                       );
                     }),
+                            
+                    // Gallery Smile Calendar
+
+                    Row(
+                      children: [
+                      SizedBox(width: 10,),
+                      Icon(Icons.photo),
+                      SizedBox(width: 10,),
+                      Icon(Icons.sentiment_satisfied_alt_outlined),
+                      SizedBox(width: 10,),
+                      Icon(Icons.calendar_month_outlined),
+                    ],),
 
                     // Message Input
                     Container(
@@ -230,6 +245,7 @@ Widget buildIndivisualMobileMessage(BuildContext context) {
                               if (messageController.text.isNotEmpty) {
                                 // Add the new message to the reactive list
                                 controller.messages.add({
+                                  'image' : chatListItems[0]['icon'],
                                   'sender': 'Albert Flores',
                                   'time': 'Now',
                                   'text': messageController.text,
