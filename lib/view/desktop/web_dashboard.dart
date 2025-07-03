@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:kingmansa/Controllers/view_controller.dart';
 import 'package:kingmansa/constants.dart';
 import 'package:kingmansa/resources.dart';
-import 'package:kingmansa/view/desktop/desktop_user.dart';
 
 Widget buildDesktopDashboard(BuildContext context) {
   final wWidth = MediaQuery.of(context).size.width;

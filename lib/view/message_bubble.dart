@@ -1,19 +1,18 @@
   import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:kingmansa/Controllers/view_controller.dart';
-import 'package:kingmansa/view/mobile/mobile_user_dashboard.dart';
 
 Widget buildMessageBubble(
+    BuildContext context,
+    String image,
     String sender,
     String time,
     String message, {
     required bool isMe,
   }) {
-
-    final controller = Get.put(ViewController());
+    final mWidth = MediaQuery.of(context).size.width;
     return Align(
       //alignment: isMe ? Alignment.centerRight : Alignment.centerLeft,
-      child: Container(
+      child: 
+      Container(
         // width: 400,
         margin: const EdgeInsets.only(bottom: 8),
         padding: const EdgeInsets.all(12),
@@ -53,8 +52,7 @@ Widget buildMessageBubble(
                     Padding(
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                       child: Container(
-                        width:
-                            controller.mobileDeviceWidth.value, // Random width
+                        width: mWidth - 30, // Random width
 
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -66,7 +64,9 @@ Widget buildMessageBubble(
                         ),
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(8.0, 8, 8, 8),
-                          child: Text(message, style: TextStyle(fontSize: 15)),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(message, style: TextStyle(color: Colors.black, fontSize: 15))),
                         ),
                       ),
                     ),
@@ -77,7 +77,7 @@ Widget buildMessageBubble(
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Image(
-                  image: AssetImage('assets/images/saree.jpeg'),
+                  image: AssetImage(image),
                   width: 50,
                   height: 50,
                   fit: BoxFit.cover,
@@ -87,7 +87,7 @@ Widget buildMessageBubble(
               ClipRRect(
                 borderRadius: BorderRadius.circular(100),
                 child: Image(
-                  image: AssetImage('assets/images/saree.jpeg'),
+                  image: AssetImage(image),
                   width: 50,
                   height: 50,
                   fit: BoxFit.cover,
@@ -119,7 +119,7 @@ Widget buildMessageBubble(
                       padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
                       child: Container(
                         width:
-                            controller.mobileDeviceWidth.value, // Random width
+                            mWidth - 30, // Random width
 
                         decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -143,4 +143,6 @@ Widget buildMessageBubble(
         ),
       ),
     );
-}
+  }
+
+

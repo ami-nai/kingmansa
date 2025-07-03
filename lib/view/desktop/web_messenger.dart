@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:kingmansa/constants.dart';
 import 'package:kingmansa/view/chat_list.dart';
 import 'package:kingmansa/view/individual_mobile_message.dart';
-import 'package:kingmansa/view/message_bubble.dart';
 
 Widget buildWebMessenger(BuildContext context) {
   final screenWidth = MediaQuery.of(context).size.width;

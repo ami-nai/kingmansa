@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/get_utils.dart';
 import 'package:kingmansa/Controllers/view_controller.dart';
 import 'package:kingmansa/constants.dart';
-import 'package:kingmansa/resources.dart';
 import 'package:kingmansa/view/chat_list.dart';
-import 'package:kingmansa/view/desktop/desktop_user.dart';
-import 'package:kingmansa/view/desktop/web_messenger.dart';
-import 'package:kingmansa/view/dimensions.dart';
-import 'package:kingmansa/view/dropdown_items.dart';
 import 'package:kingmansa/view/individual_mobile_message.dart';
 import 'package:kingmansa/view/mobile/mobile_dashboard.dart';
 import 'package:kingmansa/view/mobile/mobile_menu.dart';
-import 'package:kingmansa/view/mobile_message_screen.dart';
 
 class MobileUserDashboard extends StatelessWidget {
   MobileUserDashboard({super.key});
