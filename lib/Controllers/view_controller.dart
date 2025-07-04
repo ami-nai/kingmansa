@@ -27,6 +27,7 @@ class ViewController extends GetxController{
   @override
   void dispose() {
     super.dispose();
+    ViewController().dispose();
     print('ViewController disposed');
   }
   
